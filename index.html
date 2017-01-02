@@ -1,0 +1,58 @@
+<html>
+  <head>
+	<title>DBus körjournal</title>
+	<meta charset="UTF-8"> 
+  </head>
+  <body>
+	<h1>Körjournal Databussen</h1>
+	<p>ALLA fält i fetstil skall fyllas i.  <i>Observera att
+	  dataföreningar även behöver fylla i fakturatext och förare.</i>
+	  Om något ej kan bockas av i checklistorna SKA anledning
+	  skrivas i meddelande och DBus kontaktas.  Utlägg (diesel
+	  o.dyl.) redovisas på separat utläggslapp. Dessa finns i
+	  styretrummet.
+	</p>
+	<form action="submit.php" method="GET"><b>Typ av bokning:</b><br>
+	  <input type="radio" name="bokning" value="sektmedlem" checked> Sektionsmedlem på Data<br>
+	  <input type="radio" name="bokning" value="förening"> Förening på Data<br>
+	  <input type="radio" name="bokning" value="utom"> Utomstående<br>
+	
+	  <br>
+
+	  <b>Namn: </b><input type="text" name="name" value=""> (om förening, skriv föreningens namn)<br>
+	  
+	  <b>Mail: </b><input type="email" name="mail" value=""> (hit skickas fakturan)<br>
+	  
+	  <h3>Hyrestid</h3>
+	  <b>Datum uth: </b><input type="date" name="fromDate" value=""> (ange på formen YYYY-MM-DD)<br>
+	  <b>Klockslag: </b><input type="time" name="fromTime" value=""> (ange i 24h format, t.ex. 21:10. 2110 funkar också)<br>
+	  <b>Mätarställning: </b><input type="number" name="fromCounter" value=""><br>
+
+	  <br>
+
+<!-- avläsa senaste inlägget i exceldokumentet? Men då får ingen använda den fysiska journalen.-->
+	  <b>Datum åter: </b><input type="date" name="toDate" value=""><br>
+	  <b>Klockslag: </b><input type="time" name="toTime" value=""><br>
+	  <b>Mätarställning: </b><input type="number" name="toCounter" value=""><br>
+	  
+	  <br>
+	  
+	  Meddelande till DBus: <input type="text" name="message" value=""><br>
+	  
+	  Fakturatext och förare: <input type="text" name="faktura" value=""><br>
+	  
+	  <!-- checklistor -->
+	  <h3>Checklista innan avfärd</h3>
+	  <input type="checkbox" name="innan" value="trash1"> Inget löst skräp i bilen<br>
+	  <input type="checkbox" name="innan" value="halvtank1"> Minst halv tank<br>
+	  <input type="checkbox" name="innan" value="spill1"> Inget spillt i bilen<br>
+	  <input type="checkbox" name="innan" value="tryck1"> Däckens lufttryck är bra<br>
+	  
+	  <h3>Checklista efter avslutad färd</h3>
+	  <input type="checkbox" name="efter" value="trash2"> Inget löst skräp i bilen<br>
+	  <input type="checkbox" name="efter" value="halvtank2"> Minst halv tank<br>
+	  <input type="checkbox" name="efter" value="spill2"> Inget spillt i bilen<br>
+	  <input type="checkbox" name="efter" value="tryck2"> Däckens lufttryck är bra<br>
+	</form>
+  </body>
+</html>
