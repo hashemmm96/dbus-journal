@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<title>DBus körjournal</title>
+	<meta name="viewport" content="width=device-width; initial-scale=1.0"> 
+	<meta charset="UTF-8"> 
+  </head>
+  <body>
+	<h1>Körjournal Databussen</h1>
+	<p><b>ALLA fält i fetstil skall fyllas i.</b> <i>Observera att
+		dataföreningar även behöver fylla i fakturatext och
+		förare.</i>  Om något ej kan bockas av i checklistorna SKA
+		anledning skrivas i meddelande och DBus kontaktas. Utlägg
+		(diesel och dylikt) redovisas på separat utläggslapp. Dessa
+		finns i styretrummet.
+	</p>
+	<form action="" method="POST">
+	  <label for="sektmedlem"><b>Typ av bokning:</b>
+		<br>
+		<input type="radio" id="sektmedlem" name="bokning" value="sektmedlem" checked> Sektionsmedlem på Data<br></label>
+	  <label for="comm"><input type="radio" id="comm" name="bokning" value="comm"> Förening på Data<br></label>
+	  <label for="utom"><input type="radio" id="utom" name="bokning" value="utom"> Utomstående<br></label>
+
+	  <br>
+
+	  <label for="name"><b>Namn: </b></label>
+	  <input type="text" id="name" name="name" value=""> (om förening, skriv föreningens namn)<br>
+	  
+	  <label for="email"><b>Mail: </b></label>
+	  <input type="email" id="email" name="mail" value=""> (hit skickas fakturan)<br>
+	  
+	  <h3>Hyrestid</h3>
+	  <label for="fromDate"><b>Datum uth: </b></label>
+	  <input type="date" id="fromDate" name="fromDate" placeholder="YYYY-MM-DD" value=""> <br>
+	  <label for="fromTime"><b>Klockslag: </b></label>
+	  <input type="time" id="fromTime" name="fromTime" placeholder="HH:MM" value=""> <br> 
+	  <label for="fromCounter"><b>Mätarställning: </b></label>
+	  <input type="number" id="fromCounter" name="fromCounter" value=""><br>
+	  <br>
+
+	  <!-- avläsa senaste inlägget i exceldokumentet? Men då får ingen använda den fysiska journalen.-->
+	  <label for="toDate"><b>Datum åter: </b></label>
+	  <input type="date" id="toDate" name="toDate" placeholder="YYYY-MM-DD" value=""><br>
+	  <label for="toTime"><b>Klockslag: </b></label>
+	  <input type="time" id="toTime" name="toTime" placeholder="HH:MM" value=""><br>
+	  <label for="toCounter"><b>Mätarställning: </b></label>
+	  <input type="number" id="toCounter" name="toCounter" value=""><br>
+	  
+	  <br>
+	  
+	  <label for="message">Meddelande till DBus:</label>
+	  <input type="text" id="message" name="message" value=""><br>
+	  
+	  <label for="fakturatext">Fakturatext och förare:</label>
+	  <input type="text" id="fakturatext" name="faktura" value=""><br>
+	  
+	  <!-- checklistor -->
+	  <h3>Checklista innan avfärd</h3>
+	  <label for="trash1"><input type="checkbox" id="trash1" name="innan" value="trash1"> <b>Inget löst skräp i bilen</b></label><br>
+	  <label for="halvtank1"><input type="checkbox" id="halvtank1" name="innan" value="halvtank1"><b> Minst halv tank</b></label><br>
+	  <label for="spill1"><input type="checkbox" id="spill1" name="innan" value="spill1"> <b>Inget spillt i bilen</b></label><br>
+	  <label for="tryck1"><input type="checkbox" id="tryck1" name="innan" value="tryck1"> <b>Däckens lufttryck är bra</b></label><br>
+	  
+	  <h3>Checklista efter avslutad färd</h3>
+	  <label for="trash2"><input type="checkbox" id="trash2" name="efter" value="trash2"> <b>Inget löst skräp i bilen</b></label><br>
+	  <label for="halvtank2"><input type="checkbox" id="halvtank2" name="efter" value="halvtank2"><b> Minst halv tank</b></label><br>
+	  <label for="spill2"><input type="checkbox" id="spill2" name="efter" value="spill2"> <b>Inget spillt i bilen</b></label><br>
+	  <label for="tryck2"><input type="checkbox" id="tryck2" name="efter" value="tryck2"> <b>Däckens lufttryck är bra</b></label><br>
+	  <br>
+	  <input type="submit" value="Skicka">
+	</form>
+  </body>
+</html>
