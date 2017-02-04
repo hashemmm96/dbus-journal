@@ -31,16 +31,19 @@ function processForm(req, res) {
 
 	// Page viewed when parsing is successful.
 	// form.on('end', function() {
-	// 	fs.readFile('confirmation.html', function (err, data) {
-	// 		res.writeHead(200, {
-	// 			'Content-Type': 'text/html',
-	// 			'Content-Length': data.length
-	// 		});
-	// 		res.write(data);
-	// 		res.end();
-	// 	});
-	// });
+	//  	fs.readFile('confirmation.html', function (err, data) {
+	//  		res.writeHead(200, {
+	//  			'Content-Type': 'text/html',
+	//  			'Content-Length': data.length
+	//  		});
+	//  		res.write(data);
+	//  		res.end();
+	//  	});
+	// }); 
 	
+
+	
+	// For debugging purposes-------------------------------------------------
 	form.parse(req, function (err, fields, files) {
         //Store the data from the fields in your data store.
         //The data store could be a file or database or any other store based
@@ -54,6 +57,7 @@ function processForm(req, res) {
             files: files
         }));
     });
+	//------------------------------------------------------------------------
 }
 
 server.listen(1185);
