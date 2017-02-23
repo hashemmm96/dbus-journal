@@ -1,16 +1,15 @@
 'use strict'
 
-var http = require('http');
 var fs = require('fs');
-var formidable = require('formidable');
 var express = require('fs');
 var readline = require('readline');
-var google = require('googleapis');
+//var google = require('googleapis');
 var util = require('util');
 var GoogleSpreadsheet = require('google-spreadsheet');
 var async = require('async');
 var doc = new GoogleSpreadsheet('1E-Z2AOufVk533XaEwyRGx0IVrXqrYuwGI0WtBN550h8');
 var sheet;
+var app = express();
 
 async.series([
 	function setAuth(step) {
@@ -24,15 +23,8 @@ async.series([
 			console.log('sheet 1: '+sheet.title+' '+sheet.rowCount+'x'+sheet.colCount);
 			step();
 		});
-	}]);
-
-var server = http.createServer(function (req, res) {
-	if(req.method.toLowerCase() == 'get'){
-		displayForm(res);
-	} else if (req.method.toLowerCase() == 'post') {
-		processForm(req, res);
 	}
-});
+]);
 
 function displayForm(res) {
     fs.readFile('form.html', function (err, data) {
@@ -46,21 +38,29 @@ function displayForm(res) {
 }
 
 function processForm(req, res) {
-	var form = new formidable.IncomingForm();
 	/* TODO Code for parsing form. Insert values of submitted fields
 	 * into google sheet. */
+				 
+	var bokning = req.body.bokning;
+	var name = req.body.name;
+	var mail = req.body.mail;
+	var fromDate = req.body.fromDate;
+	var fromTime = req.body.fromTime;
+	var fromCounter = req.body.fromCounter;
+	var toDate = req.body.toDate;
+	var toTime = req.body.toTime;
+	var toCounter = req.body.toCounter;
+	var message = req.body.message;
+	var faktura = req.body.faktura;
+	var innan = {req.body.trash1, req.body.halvtank1, req.body.spill1, req.body.tryck1}
+	var efter = {req.body.trash2, req.body.halvtank2, req.body.spill2, req.body.tryck2}
+	
+	console.log(req.body);
 
-	var row = { bokning: '',
-				name: '',
-				mail: '',
-				fromDate: '',
-				fromTime: '',
-				fromCounter: '',
-				toDate: '',
-				toTime: '',
-				toCounter: '',
-				message: '',
-				faktura: '' }
+// 	console.log(bokning + ", " + name + ", " + mail + ", " +  fromDate + ", " + fromTime
+// 			    + ", " + fromCounter + ", " + toDate + ", " + toTime + ", " + toCounter
+// 			    + ", " + message + ", " + faktura + ", " + innan + ", " + efter);
+
 	// var row;
 	// form.on('field', function(field, value) {
 	// 	var key = field;
@@ -72,15 +72,15 @@ function processForm(req, res) {
 	// // Page viewed when parsing is successful.
 	// form.on('end', function() {
 		
-  	// 	fs.readFile('confirmation.html', function (err, data) {
-  	// 		res.writeHead(200, {
-  	// 			'Content-Type': 'text/html',
-  	// 			'Content-Length': data.length
-  	// 		});
-  	// 		res.write(data);
-  	// 		res.end();
-  	// 	});
-	// }); 
+  	fs.readFile('confirmation.html', function (err, data) {
+  			res.writeHead(200, {
+  				'Content-Type': 'text/html',
+  				'Content-Length': data.length
+  			});
+  			res.write(data);
+  			res.end();
+  		});
+	}); 
 
 	// sheet.addRow(row, function(err, res) {
 	// 	if(err) throw err;
@@ -88,29 +88,28 @@ function processForm(req, res) {
 	// });
 	
 	// For debugging purposes-------------------------------------------------
-	form.parse(req, function (err, fields, files) {
-		
-		console.log(row);
-		sheet.addRow(row, function(err, res) {
-			if(err) throw err;
-			console.log("wrote");
-		});
+	// form.parse(req, function (err, fields, files) {
+	// 	console.log(row);
+	// 	sheet.addRow(row, function(err, res) {
+	// 		if(err) throw err;
+	// 		console.log("wrote");
+	// 	});
 
-        //Store the data from the fields in your data store.
-        //The data store could be a file or database or any other store based
-        //on your application.
-        res.writeHead(200, {
-            'content-type': 'text/plain'
-        });
-        res.write('received the data:\n\n');
-        res.end(util.inspect({
-            fields: fields,
-            files: files
-        }));
-    });
+    //     //Store the data from the fields in your data store.
+    //     //The data store could be a file or database or any other store based
+    //     //on your application.
+    //     res.writeHead(200, {
+    //         'content-type': 'text/plain'
+    //     });
+    //     res.write('received the data:\n\n');
+    //     res.end(util.inspect({
+    //         fields: fields,
+    //         files: files
+    //     }));
+    // });
 	//------------------------------------------------------------------------
-
 }
 
-server.listen(1185);
-console.log("server listening on 1185");
+app.listen(3000);
+
+console.log("server listening on 3000");
