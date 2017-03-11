@@ -1,10 +1,9 @@
 'use strict'
 
-var fs = require('fs');
-var express = require('fs');
-var readline = require('readline');
-//var google = require('googleapis');
-var util = require('util');
+var express = require('express');
+// var readline = require('readline');
+// var google = require('googleapis');
+// var util = require('util');
 var GoogleSpreadsheet = require('google-spreadsheet');
 var async = require('async');
 var doc = new GoogleSpreadsheet('1E-Z2AOufVk533XaEwyRGx0IVrXqrYuwGI0WtBN550h8');
@@ -26,17 +25,6 @@ async.series([
 	}
 ]);
 
-function displayForm(res) {
-    fs.readFile('form.html', function (err, data) {
-        res.writeHead(200, {
-            'Content-Type': 'text/html',
-            'Content-Length': data.length
-        });
-        res.write(data);
-        res.end();
-    });
-}
-
 function processForm(req, res) {
 	/* TODO Code for parsing form. Insert values of submitted fields
 	 * into google sheet. */
@@ -52,36 +40,13 @@ function processForm(req, res) {
 	var toCounter = req.body.toCounter;
 	var message = req.body.message;
 	var faktura = req.body.faktura;
-	var innan = {req.body.trash1, req.body.halvtank1, req.body.spill1, req.body.tryck1}
-	var efter = {req.body.trash2, req.body.halvtank2, req.body.spill2, req.body.tryck2}
-	
+	var innan = req.body.innan;
+	var efter = req.body.efter;
+
 	console.log(req.body);
 
-// 	console.log(bokning + ", " + name + ", " + mail + ", " +  fromDate + ", " + fromTime
-// 			    + ", " + fromCounter + ", " + toDate + ", " + toTime + ", " + toCounter
-// 			    + ", " + message + ", " + faktura + ", " + innan + ", " + efter);
-
-	// var row;
-	// form.on('field', function(field, value) {
-	// 	var key = field;
-	// 	var val = value;
-	// 	row.key = val;
-	// });
-
-	// console.log(row);
-	// // Page viewed when parsing is successful.
-	// form.on('end', function() {
-		
-  	fs.readFile('confirmation.html', function (err, data) {
-  			res.writeHead(200, {
-  				'Content-Type': 'text/html',
-  				'Content-Length': data.length
-  			});
-  			res.write(data);
-  			res.end();
-  		});
-	}); 
-
+	// Old code used when express wasnt active
+	
 	// sheet.addRow(row, function(err, res) {
 	// 	if(err) throw err;
 	// 	console.log("wrote values");
