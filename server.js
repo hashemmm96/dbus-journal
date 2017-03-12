@@ -45,6 +45,7 @@ function calcDays(startDate, endDate, startTime, endTime) {
 }
 
 function calcCost(req, days, distance) {
+	// TODO: implement violation fees. 
 	var kmCost1;
 	var kmCost2;
 	var extra;
@@ -64,10 +65,11 @@ function calcCost(req, days, distance) {
 		break;
 	}
 	if(distance < 100) {
-		return days*dayCost + distance*kmCost1 + extra;
+		return days * dayCost + distance * kmCost1 + extra;
 	}
 	else {
-		return days*dayCost + distance*kmCost1 + (distance - 100)*kmCost2 + extra;
+		return days * dayCost + distance * kmCost1 +
+			(distance - 100) * kmCost2 + extra;
 	}
 }
 
@@ -89,7 +91,7 @@ function processForm(req, res) {
 		fakturatext : req.body.fakturatext,
 		innan : req.body.innan,
 		efter : req.body.efter,
-		duration : days + " " + dagar,
+		duration : days + " " + "dygn",
 		cost : cost
 	}
 
