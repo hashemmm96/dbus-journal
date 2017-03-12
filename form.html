@@ -24,26 +24,26 @@
 	  <br>
 
 	  <label for="name"><b>Namn: </b></label>
-	  <input name="name" type="text" id="name"> (om förening, skriv föreningens namn)<br>
+	  <input name="name" type="text" id="name" required> (om förening, skriv föreningens namn)<br>
 	  
 	  <label for="email"><b>Mail: </b></label>
-	  <input name="mail" type="email" id="email"> (hit skickas fakturan)<br>
+	  <input name="mail" type="email" id="email" required> (hit skickas fakturan)<br>
 	  
 	  <h3>Hyrestid</h3>
 	  <label for="fromDate"><b>Datum uth: </b></label>
-	  <input name="fromDate" type="date" id="fromDate" placeholder="YYYY-MM-DD"> <br>
+	  <input name="fromDate" type="date" id="fromDate" placeholder="YYYY-MM-DD" required> <br>
 	  <label for="fromTime"><b>Klockslag: </b></label>
-	  <input name="fromTime" type="time" id="fromTime" placeholder="HH:MM"> <br> 
+	  <input name="fromTime" type="time" id="fromTime" placeholder="HH:MM" required> <br> 
 	  <label for="fromCounter"><b>Mätarställning: </b></label>
-	  <input name="fromCounter" type="number" id="fromCounter"><br>
+	  <input name="fromCounter" type="number" id="fromCounter" required><br>
 	  <br>
 
 	  <label for="toDate"><b>Datum åter: </b></label>
-	  <input name="toDate" type="date" id="toDate" placeholder="YYYY-MM-DD"><br>
+	  <input name="toDate" type="date" id="toDate" placeholder="YYYY-MM-DD" required><br>
 	  <label for="toTime"><b>Klockslag: </b></label>
-	  <input name="toTime" type="time" id="toTime" placeholder="HH:MM"><br>
+	  <input name="toTime" type="time" id="toTime" placeholder="HH:MM" required><br>
 	  <label for="toCounter"><b>Mätarställning: </b></label>
-	  <input name="toCounter" type="number" id="toCounter"><br>
+	  <input name="toCounter" type="number" id="toCounter" required><br>
 	  
 	  <br>
 	  
@@ -51,7 +51,7 @@
 	  <input name="message" type="text" id="message"><br>
 	  
 	  <label for="fakturatext">Fakturatext och förare:</label>
-	  <input name="fakturatext" type="text" id="fakturatext"><br>
+	  <input name="fakturatext" type="text" id="fakturatext"> Obligatorisk för föreningar!<br>
 	  
 	  <!-- checklistor -->
 	  <h3>Checklista innan avfärd</h3>
