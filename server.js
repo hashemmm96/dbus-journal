@@ -1,6 +1,5 @@
 'use strict'
 
-// Essential requirements.
 var express = require('express');
 var GoogleSpreadsheet = require('google-spreadsheet');
 var async = require('async');
@@ -32,24 +31,18 @@ async.series([
 function processForm(req, res) {
 	/* TODO Code for parsing form. Insert values of submitted fields
 	 * into google sheet. */
-		
-	// Variables for all the elements in the form.
-	// var bokning = req.body.bokning;
-	// var name = req.body.name;
-	// var mail = req.body.mail;
-	// var fromDate = req.body.fromDate;
-	// var fromTime = req.body.fromTime;
-	// var fromCounter = req.body.fromCounter;
-	// var toDate = req.body.toDate;
-	// var toTime = req.body.toTime;
-	// var toCounter = req.body.toCounter;
-	// var message = req.body.message;
-	// var faktura = req.body.faktura;
-	// var innan = req.body.innan;
-	// var efter = req.body.efter;
 
-	console.log(req.body);
+	// The values to be written to the sheet.
+	var row = {
+		reqbody : req.body,
+		lol : "hel"
+	}
 
+	// Add form values and additional fields to sheet.
+	sheet.addRow(row, function(err){
+		if (err) throw err;
+		console.log("Data added successfully.");
+	});
 }
 
 var urlParser = bodyParser.urlencoded({
@@ -63,7 +56,7 @@ app.get('/', function (req, res) {
 
 // Action taken on form submission
 app.post('/', urlParser, function (req, res) {
-	//processForm(req, res);
+	processForm(req, res);
 	//res.sendFile(__dirname + '/confirmation.html')
 	console.log(req.body);
 	res.send(req.body);
