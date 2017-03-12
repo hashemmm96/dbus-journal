@@ -14,12 +14,12 @@
 		(diesel och dylikt) redovisas på separat utläggslapp. Dessa
 		finns i styretrummet.
 	</p>
-	<form enctype="application/json" action="/" method="post">
+	<form action="/" method="post">
 	  <b>Typ av bokning:</b>
 		<br>
-		<label for="sektmedlem"><input name="bokning" type="radio" id="sektmedlem" checked> Sektionsmedlem på Data<br></label>
-	  <label for="comm"><input name="bokning" type="radio" id="comm"> Förening på Data<br></label>
-	  <label for="utom"><input name="bokning" type="radio" id="utom"> Utomstående<br></label>
+		<label for="sekt"><input name="bokning" type="radio" id="sekt" value="sekt" checked> Sektionsmedlem på Data<br></label>
+		<label for="comm"><input name="bokning" type="radio" id="comm" value="comm"> Förening på Data<br></label>
+		<label for="utom"><input name="bokning" type="radio" id="utom" value="utom"> Utomstående<br></label>
 
 	  <br>
 
@@ -55,16 +55,16 @@
 	  
 	  <!-- checklistor -->
 	  <h3>Checklista innan avfärd</h3>
-	  <label for="trash1"><input name="innan" type="checkbox" id="trash1"><b>Inget löst skräp i bilen</b></label><br>
-	  <label for="halvtank1"><input name="innan" type="checkbox" id="halvtank1"><b> Minst halv tank</b></label><br>
-	  <label for="spill1"><input name="innan" type="checkbox" id="spill1"> <b>Inget spillt i bilen</b></label><br>
-	  <label for="tryck1"><input name="innan" type="checkbox" id="tryck1"> <b>Däckens lufttryck är bra</b></label><br>
+	  <label for="trash1"><input name="innan" type="checkbox" id="trash1" value="trash"><b>Inget löst skräp i bilen</b></label><br>
+	  <label for="halvtank1"><input name="innan" type="checkbox" id="halvtank1" value="halvtank"><b> Minst halv tank</b></label><br>
+	  <label for="spill1"><input name="innan" type="checkbox" id="spill1" value="spill"> <b>Inget spillt i bilen</b></label><br>
+	  <label for="tryck1"><input name="innan" type="checkbox" id="tryck1" value="tryck"> <b>Däckens lufttryck är bra</b></label><br>
 	  
 	  <h3>Checklista efter avslutad färd</h3>
-	  <label for="trash2"><input name="efter" type="checkbox" id="trash2"> <b>Inget löst skräp i bilen</b></label><br>
-	  <label for="halvtank2"><input name="efter" type="checkbox" id="halvtank2"><b> Minst halv tank</b></label><br>
-	  <label for="spill2"><input name="efter" type="checkbox" id="spill2"> <b>Inget spillt i bilen</b></label><br>
-	  <label for="tryck2"><input name="efter" type="checkbox" id="tryck2"> <b>Däckens lufttryck är bra</b></label><br>
+	  <label for="trash2"><input name="efter" type="checkbox" id="trash2" value="trash"> <b>Inget löst skräp i bilen</b></label><br>
+	  <label for="halvtank2"><input name="efter" type="checkbox" id="halvtank2" value="halvtank"><b> Minst halv tank</b></label><br>
+	  <label for="spill2"><input name="efter" type="checkbox" id="spill2" value="spill"> <b>Inget spillt i bilen</b></label><br>
+	  <label for="tryck2"><input name="efter" type="checkbox" id="tryck2" value="tryck"> <b>Däckens lufttryck är bra</b></label><br>
 	  <br>
 	  <input type="submit" value="Skicka">
 	</form>
