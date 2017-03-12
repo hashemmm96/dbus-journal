@@ -52,7 +52,9 @@ function processForm(req, res) {
 
 }
 
-var jsonParser = bodyParser.json();
+var urlParser = bodyParser.urlencoded({
+	extended : true
+});
 
 // Startpage
 app.get('/', function (req, res) {
@@ -60,11 +62,11 @@ app.get('/', function (req, res) {
 });
 
 // Action taken on form submission
-app.post('/', jsonParser, function (req, res) {
+app.post('/', urlParser, function (req, res) {
 	//processForm(req, res);
 	//res.sendFile(__dirname + '/confirmation.html')
 	console.log(req.body);
-	res.json(req.body);
+	res.send(req.body);
 });
 
 app.listen(3000);
