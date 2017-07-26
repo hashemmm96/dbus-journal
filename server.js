@@ -6,7 +6,7 @@ var async = require('async');
 var bodyParser = require('body-parser');
 // Here you sepcify which google sheet to use. The ID of the sheet is
 // the long part of the URL to the sheet.
-var doc = new GoogleSpreadsheet('1E-Z2AOufVk533XaEwyRGx0IVrXqrYuwGI0WtBN550h8');
+var doc = new GoogleSpreadsheet('1Mxj_adOl2qfAJUEZ1kKFrLkQ_iNYF8a85ODG_JaQV14');
 var sheet;
 var app = express();
 
@@ -50,8 +50,8 @@ function calcCost(req, days, distance) {
 	var kmCost2;
 	var extra;
 	var dayCost;
-	switch(req.body.bokning) {
-	case "utomstående":
+	switch(req.body.bokningstyp) {
+	case "Utomstående":
 		kmCost1 = 10;
 		kmCost2 = 5;
 		dayCost = 150;
@@ -81,18 +81,17 @@ function processForm(req, res) {
 
 	// The values to be written to the sheet.
 	var row = {
-		bokning : req.body.bokning,
-		name : req.body.name,
-		mail : req.body.mail,
-		distance : distance,
-		from : req.body.fromDate + " " + req.body.fromTime,
-		to : req.body.toDate + " " + req.body.toTime,
-		message : req.body.message,
-		fakturatext : req.body.fakturatext,
-		innan : req.body.innan,
-		efter : req.body.efter,
-		duration : days + " " + "dygn",
-		cost : cost
+		Namn : req.body.name,
+		Epost : req.body.mail,
+		Fakturatext : req.body.fakturatext,
+		Meddelande : req.body.message,
+		Fixat_Datum : req.body.fromDate, 
+		Antal_dygn : days,
+		Kilometer : distance,
+		Typ_av_bokning : req.body.bokningstyp,
+		Checklista_innan_avfärd : req.body.innan,
+		Checklista_efter_avfärd : req.body.efter,
+		Kostnad : cost
 	}
 
 	// Add form values and additional fields to sheet.
