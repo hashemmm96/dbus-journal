@@ -4,8 +4,20 @@
 	<title>DBus körjournal</title>
 	<meta name="viewport" content="width=device-width; initial-scale=1.0"> 
 	<meta charset="UTF-8"> 
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
   </head>
   <body>
+	<!-- for browser testing only -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script>
+	  $( function() {
+		$( "#fromDate" ).datepicker({ dateFormat: 'yy-mm-dd' });
+		$( "#toDate" ).datepicker({ dateFormat: 'yy-mm-dd' });
+	  } );
+	</script>
+	<!-- -------------------------->
+
 	<h1>Körjournal Databussen</h1>
 	<p><b>ALLA fält i fetstil skall fyllas i.</b> <i>Observera att
 		dataföreningar även behöver fylla i fakturatext och
@@ -17,9 +29,9 @@
 	<form action="/" method="post">
 	  <b>Typ av bokning:</b>
 		<br>
-		<label for="sekt"><input name="bokning" type="radio" id="sekt" value="sektmedlem" checked> Sektionsmedlem på Data<br></label>
-		<label for="comm"><input name="bokning" type="radio" id="comm" value="förening"> Förening på Data<br></label>
-		<label for="utom"><input name="bokning" type="radio" id="utom" value="utomstående"> Utomstående<br></label>
+		<label for="sekt"><input name="bokningstyp" type="radio" id="sekt" value="Sektionsmedlem" checked> Sektionsmedlem på Data<br></label>
+	<label for="comm"><input name="bokningstyp" type="radio" id="comm" value="Sektionsförening"> Förening på Data<br></label>
+		<label for="utom"><input name="bokningstyp" type="radio" id="utom" value="Utomstående"> Utomstående<br></label>
 
 	  <br>
 
@@ -31,17 +43,17 @@
 	  
 	  <h3>Hyrestid</h3>
 	  <label for="fromDate"><b>Datum uth: </b></label>
-	  <input name="fromDate" type="date" id="fromDate" placeholder="YYYY-MM-DD" required> <br>
+	  <input name="fromDate" type="date" id="fromDate" placeholder="YYYY-MM-DD" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"> <br>
 	  <label for="fromTime"><b>Klockslag: </b></label>
-	  <input name="fromTime" type="time" id="fromTime" placeholder="HH:MM" required> <br> 
+	  <input name="fromTime" type="time" id="fromTime" placeholder="HH:MM" required pattern="[0-23]{2}:[0-59]{2}"> <br> 
 	  <label for="fromCounter"><b>Mätarställning: </b></label>
 	  <input name="fromCounter" type="number" id="fromCounter" required><br>
 	  <br>
 
 	  <label for="toDate"><b>Datum åter: </b></label>
-	  <input name="toDate" type="date" id="toDate" placeholder="YYYY-MM-DD" required><br>
+	  <input name="toDate" type="date" id="toDate" placeholder="YYYY-MM-DD" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"><br>
 	  <label for="toTime"><b>Klockslag: </b></label>
-	  <input name="toTime" type="time" id="toTime" placeholder="HH:MM" required><br>
+	  <input name="toTime" type="time" id="toTime" placeholder="HH:MM" required pattern="[0-23]{2}:[0-59]{2}"><br>
 	  <label for="toCounter"><b>Mätarställning: </b></label>
 	  <input name="toCounter" type="number" id="toCounter" required><br>
 	  
